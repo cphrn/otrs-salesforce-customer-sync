@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<otrs_config version="2.0" init="Application">
+	<Setting Name="SalesForceModule" Required="1" Valid="1">
+        <Description Translatable="1">Activates the SalesForceModule in the agent interface.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+        	<Item ValueType="Checkbox">1</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::AuthUser" Required="1" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, and authentication to the salesforce server is needed, an username must be specified.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex=""></Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::AuthPassword" Required="1" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, and authentication to the salesforce server is needed, a password must be specified.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="Password"></Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::AuthSecToken" Required="1" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, and authentication to the salesforce server is needed, a security token must be specified.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="Password"></Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Proxy" Required="0" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, define the proxy soap login url.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">https://login.salesforce.com/services/Soap/u/8.0</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::BaseUrl" Required="0" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, define the api base url.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">urn:partner.soap.sforce.com</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Prefix" Required="0" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, define the api prefix.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">sforce</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::SObjectUrl" Required="0" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, define the api sobject url.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">urn:sobject.partner.soap.sforce.com</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::MetaDataUrl" Required="0" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, define the api metadata url.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">http://soap.sforce.com/2006/04/metadata</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::APIVersion" Required="0" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, define the api version.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">23.0</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::WebProxy" Required="0" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, if firewall blocks port 443 to proxy soap login url, define the web proxy. (Example: http://my.proxy.com:8080)</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex=""></Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Companies::AddAttributesToParams" Required="0" Valid="1">
+        <Description Translatable="1">Set additional otrs params (CustomerCompanyAdd / CustomerCompanyUpdate - Function) to salesforce attributes (e.g. like Account.Street) for companies. (Key = OTRS Param / Value = SalesForce Attribute)</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="CustomerCompanyStreet"></Item>
+                <Item Key="CustomerCompanyZIP"></Item>
+                <Item Key="CustomerCompanyLocation"></Item>
+                <Item Key="CustomerCompanyCountry"></Item>
+                <Item Key="CustomerCompanyURL"></Item>
+                <Item Key="CustomerCompanyComment"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Companies::Where" Required="0" Valid="1">
+        <Description Translatable="1">Set a where condition to filter the output of data for companies. (begin after 'Where')</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="Textarea"></Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Companies::Limit" Required="0" Valid="0">
+        <Description Translatable="1">Set the output limit of data for companies. (Min: 1 / Max: 2000)</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^[1-9][0-9]?$|^2000$">10</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Companies::DeleteOld" Required="0" Valid="1">
+        <Description Translatable="1">Set search attribute to delete old company entries after sync.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">00*</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Customers::AddAttributesToParams" Required="0" Valid="1">
+        <Description Translatable="1">Set additional otrs params (CustomerUserAdd / CustomerUserUpdate - Function) to salesforce attributes (e.g. like Owner.Title) for customers. (Key = OTRS Param / Value = SalesForce Attribute)</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="UserTitle"></Item>
+                <Item Key="UserPhone"></Item>
+                <Item Key="UserFax"></Item>
+                <Item Key="UserMobile"></Item>
+                <Item Key="UserStreet"></Item>
+                <Item Key="UserZip"></Item>
+                <Item Key="UserCity"></Item>
+                <Item Key="UserCountry"></Item>
+                <Item Key="UserLanguage"></Item>
+                <Item Key="UserTimeZone"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Customers::Where" Required="0" Valid="1">
+        <Description Translatable="1">Set a where condition to filter the output of data for customers. (begin after 'Where')</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="Textarea"></Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Customers::Limit" Required="0" Valid="0">
+        <Description Translatable="1">Set the output limit of data for customers. (Min: 1 / Max: 2000)</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^[1-9][0-9]?$|^2000$">10</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Customers::DefaultCustomerID" Required="0" Valid="1">
+        <Description Translatable="1">Set the default customer id of data for customers.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">1</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::Customers::DeleteOld" Required="0" Valid="1">
+        <Description Translatable="1">Set search attribute to delete old customer entries after sync.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">00*</Item>
+        </Value>
+    </Setting>
+    <Setting Name="SalesForceModule::ValidData" Required="0" Valid="1">
+        <Description Translatable="1">If SalesForceModule was set to active, activate this option to get only valid data.</Description>
+        <Navigation>Core::SalesForce</Navigation>
+        <Value>
+            <Item ValueType="Select" SelectedID="1">
+                <Item ValueType="Option" Value="0" Translatable="1">No</Item>
+                <Item ValueType="Option" Value="1" Translatable="1">Yes</Item>
+            </Item>
+        </Value>
+    </Setting>
+    <Setting Name="Daemon::SchedulerCronTaskManager::Task###SalesForceSyncCompanies" Required="0" Valid="0">
+        <Description Translatable="1">Synchronize SalesForce Companies Data into OTRS.</Description>
+        <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="TaskName">SalesForceSyncCompanies</Item>
+                <Item Key="Schedule">0 3 * * *</Item> <!-- default once daily at 3AM -->
+                <Item Key="Module">Kernel::System::Console::Command::Admin::SalesForce::SyncCompanies</Item>
+                <Item Key="Function">Run</Item>
+                <Item Key="MaximumParallelInstances">1</Item>
+                <Item Key="Params">
+                    <Array>
+                    </Array>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="Daemon::SchedulerCronTaskManager::Task###SalesForceSyncCustomers" Required="0" Valid="0">
+        <Description Translatable="1">Synchronize SalesForce Customers Data into OTRS.</Description>
+        <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="TaskName">SalesForceSyncCustomers</Item>
+                <Item Key="Schedule">0 3 * * *</Item> <!-- default once daily at 3AM -->
+                <Item Key="Module">Kernel::System::Console::Command::Admin::SalesForce::SyncCustomers</Item>
+                <Item Key="Function">Run</Item>
+                <Item Key="MaximumParallelInstances">1</Item>
+                <Item Key="Params">
+                    <Array>
+                    </Array>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
+</otrs_config>
