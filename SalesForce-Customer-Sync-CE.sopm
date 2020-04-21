@@ -5,7 +5,7 @@
     <Framework>6.0.x</Framework>
     <Vendor>Ciphron GmbH</Vendor>
     <URL>https://ciphron.de/</URL>
-    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
+    <License>GNU GENERAL PUBLIC LICENSE Version 3, November 2007</License>
     <Description Lang="en">Synchronizes customer data between OTRS and SalesForce.</Description>
     <Description Lang="de">Synchronisiert Kundendaten zwischen OTRS und SalesForce. </Description>
     <IntroInstall Type="pre" Lang="en" Title="Information"><![CDATA[<br><br>Thank you for choosing our Package! <br> <br> for more Information. <br><br> For more Information regarding our services Check: <br><br><span style="margin-left: 5%;"><a href="https://ciphron.de/">https://ciphron.de/</a></span><br><br>]]></IntroInstall>
